@@ -24,8 +24,6 @@ knitr::opts_chunk$set(
   <img src="logo_200x200.png" />
 </p>
 
-
-
 Um pequeno guia para aplicação da identidade visual da Transparência Brasil em relatórios e documentos diversos que envolvem análise de dados.
 
 ## Paleta de cores 
@@ -36,6 +34,7 @@ tb_colors <- c(
   "#F6A323", # Azul 
   "gray95",   # em branco?
   "#41ACBD"  # Laranja
+  
   
   )
 
@@ -86,6 +85,8 @@ barplot(rep(1, 50),
 
 ```
 
+
+
 # Template para `ggplot2`
 
 ```{r}
@@ -121,9 +122,24 @@ theme_tb <- function (base_size = 12, base_family = "Helvetica",
 
 Aplicando o template em um exemplo:
 
+
 ```{r}
 library(ggplot2)
 
+numero_de_cores <- dplyr::n_distinct(as.factor(mtcars$cyl))
+pal <- colorRampPalette(tb_colors)(numero_de_cores)
+
+ggplot(mtcars, aes(x = disp, y = mpg, fill = as.factor(cyl))) + 
+  geom_point(shape = 21, size = 4, alpha = .6) +
+  # aplica theme_tb e paleta de cores
+  theme_tb() +
+  scale_fill_manual(values = pal)
+```
+
+> **TO DO**: incluir mais cores?
+
+
+```{r}
 numero_de_cores <- dplyr::n_distinct(diamonds$cut)
 pal <- colorRampPalette(tb_colors)(numero_de_cores)
 

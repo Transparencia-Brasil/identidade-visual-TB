@@ -24,6 +24,7 @@ tb_colors <- c(
   "gray95",   # em branco?
   "#41ACBD"  # Laranja
   
+  
   )
 
 # TODO: incluir mais cores, talvez uma cor quente para o vermelho?
@@ -90,6 +91,21 @@ Aplicando o template em um exemplo:
 ``` r
 library(ggplot2)
 
+numero_de_cores <- dplyr::n_distinct(as.factor(mtcars$cyl))
+pal <- colorRampPalette(tb_colors)(numero_de_cores)
+
+ggplot(mtcars, aes(x = disp, y = mpg, fill = as.factor(cyl))) + 
+  geom_point(shape = 21, size = 4, alpha = .6) +
+  # aplica theme_tb e paleta de cores
+  theme_tb() +
+  scale_fill_manual(values = pal)
+```
+
+<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+
+> **TO DO**: incluir mais cores?
+
+``` r
 numero_de_cores <- dplyr::n_distinct(diamonds$cut)
 pal <- colorRampPalette(tb_colors)(numero_de_cores)
 
@@ -100,7 +116,7 @@ ggplot(diamonds, aes(x = carat, y = price, color = cut)) +
   scale_color_manual(values = pal)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
@@ -114,4 +130,4 @@ ggplot(diamonds, aes(x = price, fill = clarity)) +
   scale_fill_manual(values = pal)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
