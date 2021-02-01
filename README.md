@@ -51,6 +51,31 @@ colorRampPalette(tb_colors)(n) # display n cores
 #>  [8] "#8FCBD4" "#68BBC8" "#41ACBD"
 ```
 
+``` r
+par(mfrow=c(3,1))
+
+barplot(rep(1, 50),
+        yaxt = "n",
+        space = c(0, 0),
+        border = NA, 
+        col= colorRampPalette(tb_colors)(50),
+        main = "Diverging")
+
+barplot(rep(1, 50),
+        yaxt = "n",
+        space = c(0, 0),
+        border = NA, 
+        col= colorRampPalette(tb_colors[2:3])(50),
+        main = "Sequential to blue")
+
+barplot(rep(1, 50),
+        yaxt = "n",
+        space = c(0, 0),
+        border = NA, 
+        col= colorRampPalette(tb_colors[2:1])(50),
+        main = "Sequential to yellow")
+```
+
 <img src="README_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 # Template para `ggplot2`

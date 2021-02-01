@@ -58,7 +58,7 @@ colorRampPalette(tb_colors)(n) # display n cores
 ```
 
 
-```{r echo = FALSE}
+```{r}
 par(mfrow=c(3,1))
 
 barplot(rep(1, 50),
