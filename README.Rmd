@@ -50,18 +50,16 @@ scales::show_col(tb_colors)
 
 # Definindo sequencias
 
-A função `colorRampParlette(...)(n)` interpola um conjunto qualquer de cores definindo uma sequência. O parâmetro externo `n` é o número de interpolações que atravessam o conjunto de cores. A função retorna as cores em formato hexadecimal:
+A função `colorRampParlette(...)(n)` interpola um conjunto qualquer de cores definindo uma sequência. O parâmetro externo `n` é o número de interpolações que atravessam o conjunto de cores. A função retorna as cores em um vetor de caracteres com o código hexadecimal:
 
 ```{r}
-
 # número de cores que eu quero
 n <- 10
-
 colorRampPalette(tb_colors)(n) # display n cores
 ```
 
 
-```{r}
+```{r echo = FALSE}
 par(mfrow=c(3,1))
 
 barplot(rep(1, 50),
@@ -88,7 +86,7 @@ barplot(rep(1, 50),
 
 ```
 
-## Template para `ggplot2`
+# Template para `ggplot2`
 
 ```{r}
 
@@ -147,4 +145,3 @@ ggplot(diamonds, aes(x = price, fill = clarity)) +
   theme_tb() +
   scale_fill_manual(values = pal)
 ```
-

@@ -3,7 +3,7 @@ Identidade visual com `ggplot2`
 
   - [Paleta de cores](#paleta-de-cores)
   - [Definindo sequencias](#definindo-sequencias)
-      - [Template para `ggplot2`](#template-para-ggplot2)
+  - [Template para `ggplot2`](#template-para-ggplot2)
 
 <p align="center">
 
@@ -40,46 +40,19 @@ scales::show_col(tb_colors)
 A função `colorRampParlette(...)(n)` interpola um conjunto qualquer de
 cores definindo uma sequência. O parâmetro externo `n` é o número de
 interpolações que atravessam o conjunto de cores. A função retorna as
-cores em formato hexadecimal:
+cores em um vetor de caracteres com o código hexadecimal:
 
 ``` r
-
 # número de cores que eu quero
 n <- 10
-
 colorRampPalette(tb_colors)(n) # display n cores
 #>  [1] "#F6A323" "#F5B451" "#F4C67F" "#F3D7AD" "#F2E9DB" "#DEEAEC" "#B7DAE0"
 #>  [8] "#8FCBD4" "#68BBC8" "#41ACBD"
 ```
 
-``` r
-par(mfrow=c(3,1))
-
-barplot(rep(1, 50),
-        yaxt = "n",
-        space = c(0, 0),
-        border = NA, 
-        col= colorRampPalette(tb_colors)(50),
-        main = "Diverging")
-
-barplot(rep(1, 50),
-        yaxt = "n",
-        space = c(0, 0),
-        border = NA, 
-        col= colorRampPalette(tb_colors[2:3])(50),
-        main = "Sequential to blue")
-
-barplot(rep(1, 50),
-        yaxt = "n",
-        space = c(0, 0),
-        border = NA, 
-        col= colorRampPalette(tb_colors[2:1])(50),
-        main = "Sequential to yellow")
-```
-
 <img src="README_files/figure-gfm/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
-## Template para `ggplot2`
+# Template para `ggplot2`
 
 ``` r
 
